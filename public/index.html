@@ -4,6 +4,7 @@
 	<title>Social Zoo</title>
 	<link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
+	<script src="https://www.gstatic.com/firebasejs/3.6.4/firebase.js"></script>
 	<link href="../../css/style.css" rel='stylesheet' type='text/css' />
 </head>
 <body ng-app="SocialZoo">
@@ -12,7 +13,7 @@
 
 <main ng-view></main>
 
-<footer ng-if="isLoggedIn" footer></footer>
+<footer ng-if="isLoggedIn" footer class="page-footer"></footer>
 
 
 <script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
