@@ -1,10 +1,10 @@
 angular.module('SocialZoo').controller('loginController', loginController);
 
-function loginController($http, $location, $window, usersFactory, jwtHelper, $rootScope) {
+function loginController($http, $location, $window, authentificationFactory, jwtHelper, $rootScope) {
   var lc = this;
 
   lc.isLoggedIn = function() {
-    if(usersFactory.isLoggedIn) {
+    if(authentificationFactory.isLoggedIn) {
       return true;
     } else {
       return false;
@@ -23,7 +23,7 @@ function loginController($http, $location, $window, usersFactory, jwtHelper, $ro
       $http.post('/api/users/login', user).then(function(response) {
         if(response.data.success) {
           $window.sessionStorage.token = response.data.token;
-          usersFactory.isLoggedIn = true;
+          authentificationFactory.isLoggedIn = true;
           var token = $window.sessionStorage.token;
           var decodedToken = jwtHelper.decodeToken(token);
           console.log(decodedToken);
@@ -38,7 +38,7 @@ function loginController($http, $location, $window, usersFactory, jwtHelper, $ro
     }
   };
 
-  
+
 
   lc.logout = function() {
     AuthFactory.isLoggedIn = false;

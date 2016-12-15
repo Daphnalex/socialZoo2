@@ -1,0 +1,95 @@
+/*COMMON CSS*/
+html {
+    height: 100%;
+}
+footer {
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+body{
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+main {
+  flex: 1 0 auto;
+}
+footer.page-footer{
+  margin-top: 0px;
+  padding-top: 0px;
+}
+/*FIN COMMON CSS*/
+
+/*BARRE DE NAV*/
+nav {
+  border-bottom: 5px solid #6e17db;
+  background-color: white;
+}
+nav ul a {
+  font-size: 18px;
+    color: #6e17db;
+}
+.brand-logo{
+  margin-left : 25px;
+}
+.input-field.search-wrapper{
+  width: 30%;
+  left: 30%;
+  background-color: white;
+  height: 40px;
+  top: 15%;
+}
+.input-field input[type=search]+label {
+  font-size: 22px;
+  top : -10px;
+}
+.input-field{
+  border: 3px solid #ffab00;
+}
+.nav-wrapper.recherche{
+  width: 25%;
+  margin-left: 2%;
+    margin-top:20px;
+  color: white;
+}
+.input-field input[type=search] ~ .mdi-navigation-close, .input-field input[type=search] ~ .material-icons{
+  font-size: 22px;
+  top : -10px;
+}
+nav .input-field label {
+  height: 40px;
+}
+
+nav .brand-logo{
+  height: 59px;
+}
+/*FIN BARRE DE NAV*/
+
+/*FOOTER*/
+footer.page-footer{
+  background: #ffab00; /* Old browsers */
+}
+
+/*FOOTER*/
+
+/*COLLECTION ZOO*/
+.collection{
+  height: 60px;
+  padding-top: 8px;
+}
+.collection img{
+  top: -1px;
+}
+div.collectionZoo{
+  width: 25%;
+  margin-left: 2%;
+  color: black;
+}
+.collection .collection-item.avatar .title{
+  font-size: 20px;
+}
+.collection .collection-item.avatar{
+
+}
+/*FIN COLLECTION ZOO*/

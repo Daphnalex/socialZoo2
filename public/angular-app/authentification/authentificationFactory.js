@@ -1,6 +1,6 @@
-angular.module('SocialZoo').factory('usersFactory', usersFactory);
+angular.module('SocialZoo').factory('authentificationFactory', authentificationFactory);
 
-function usersFactory() {
+function authentificationFactory() {
   return {
     auth: auth
   };
