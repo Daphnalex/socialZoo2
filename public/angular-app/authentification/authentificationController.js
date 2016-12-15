@@ -33,9 +33,12 @@ function loginController($http, $location, $window, usersFactory, jwtHelper, $ro
         }
       }).catch(function(error) {
         console.log(error);
+        angular.element('#messageError').css('display', 'block');
       })
     }
   };
+
+  
 
   lc.logout = function() {
     AuthFactory.isLoggedIn = false;

@@ -24,6 +24,14 @@ app.config(['$httpProvider','$routeProvider', function($httpProvider,$routeProvi
         restricted : false
       }
     })
+    .when('/register', {
+      templateUrl: 'angular-app/register/register.html',
+      controller : 'RegisterController',
+      controllerAs : 'vm',
+      access : {
+        restricted : false
+      }
+    })
     .when('/', {
       templateUrl: 'angular-app/board/visualisation-board/visualisation-board.html',
       controller : 'visualisationBoardCtrl',
