@@ -33,9 +33,9 @@ app.config(['$httpProvider','$routeProvider', function($httpProvider,$routeProvi
       }
     })
     .when('/', {
-      templateUrl: 'angular-app/board/visualisation-board/visualisation-board.html',
-      controller : 'visualisationBoardCtrl',
-      controllerAs : 'vb',
+      templateUrl: 'angular-app/board/listMessage/listMessage.html',
+      controller : 'listMessageCtrl',
+      controllerAs : 'lm',
       access: {
         restricted : true
       }
