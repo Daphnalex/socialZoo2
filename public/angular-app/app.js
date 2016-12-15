@@ -1,4 +1,4 @@
-var app = angular.module('SocialZoo', ['ngRoute','angular-jwt']);
+var app = angular.module('SocialZoo', ['ngRoute','angular-jwt','firebase']);
 
 app.run(function($rootScope, $location, $window, authentificationFactory) {
   console.log($rootScope.isLoggedIn);
