@@ -44,9 +44,7 @@ nav ul a {
   font-size: 22px;
   top : -10px;
 }
-.input-field{
-  border: 3px solid #ffab00;
-}
+
 .nav-wrapper.recherche{
   width: 25%;
   margin-left: 2%;
@@ -93,3 +91,13 @@ div.collectionZoo{
 
 }
 /*FIN COLLECTION ZOO*/
+
+.couverture img{
+  position: absolute;
+}
+.btn{
+  background-color: #fab300;
+}
+.btn:hover, .btn-large:hover{
+  background-color: #fccf5e;
+}

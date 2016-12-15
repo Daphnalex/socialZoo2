@@ -7,10 +7,14 @@ module.exports.register = function(req, res){
   console.log('registering user');
   var nameZoo = req.body.nameZoo;
   var password = req.body.password;
+  var avatar = req.body.avatar;
+  var image = req.body.image;
 
 User.create({
   nameZoo : nameZoo,
-  password : bcrypt.hashSync(password, bcrypt.genSaltSync(10))
+  password : bcrypt.hashSync(password, bcrypt.genSaltSync(10)),
+  avatar : avatar,
+  image : image
 }, function(err, user){
   if(err){
     console.log(err);
