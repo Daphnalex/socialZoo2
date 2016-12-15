@@ -25,11 +25,18 @@ router
 router
   .route('/messages/:reviewId')
   .get(ctrlMessages.getOneMessage)
-  .put(ctrlMessages.updateMessage)
-  .delete(ctrlMessages.deleteMessage);
+  .put(ctrlUsers.authentificate, ctrlMessages.updateMessage)
+  .delete(ctrlUsers.authentificate, ctrlMessages.deleteMessage);
 
 router
   .route('/messages/:reviewId/comments')
-  .post(ctrlMessages.commentAddOne);
+  .post(ctrlMessages.commentAddOne)
+  .get(ctrlMessages.commentGetAll);
+
+router
+  .route('/messages/:reviewId/comments/:commentId')
+  .get(ctrlMessages.commentGetOne)
+  .put(ctrlUsers.authentificate, ctrlMessages.updateComment)
+  .delete(ctrlUsers.authentificate, ctrlMessages.commentDeleteOne);
 
 module.exports = router;

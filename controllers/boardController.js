@@ -156,3 +156,194 @@ module.exports.commentAddOne = function(req, res){
       }
     });
 };
+
+module.exports.commentGetAll = function(req, res) {
+  var id = req.params.reviewId;
+  console.log('GET comments for reviewId', id);
+
+  Review
+    .findById(id)
+    .select('comments')
+    .exec(function(err, doc) {
+      var response = {
+        status : 200,
+        message : []
+      };
+      if (err) {
+        console.log("Error finding review");
+        response.status = 500;
+        response.message = err;
+      } else if(!doc) {
+        console.log("Review id not found in database", id);
+        response.status = 404;
+        response.message = {
+          "message" : "Review ID not found " + id
+        };
+      } else {
+        response.message = doc.comments ? doc.comments : [];
+      }
+      res
+        .status(response.status)
+        .json(response.message);
+    });
+};
+
+module.exports.commentGetOne = function(req, res) {
+  var reviewId = req.params.reviewId;
+  var commentId = req.params.commentId;
+  console.log('GET commentId ' + commentId + ' for reviewId ' + reviewId);
+
+  Review
+    .findById(reviewId)
+    .select('comments')
+    .exec(function(err, review) {
+      var response = {
+        status : 200,
+        message : {}
+      };
+      if (err) {
+        console.log("Error finding review");
+        response.status = 500;
+        response.message = err;
+      } else if(!review) {
+        console.log("Review id not found in database", reviewId);
+        response.status = 404;
+        response.message = {
+          "message" : "Review ID not found " + reviewId
+        };
+      } else {
+        // Get the review
+        response.message = review.comments.id(commentId);
+        // If the review doesn't exist Mongoose returns null
+        if (!response.message) {
+          response.status = 404;
+          response.message = {
+            "message" : "Comment ID not found " + commentId
+          };
+        }
+      }
+      res
+        .status(response.status)
+        .json(response.message);
+    });
+
+};
+
+module.exports.updateComment = function(req, res) {
+  var reviewId = req.params.reviewId;
+  console.log(reviewId);
+  var commentId = req.params.commentId;
+  console.log(commentId);
+  console.log('PUT commentId ' + commentId + ' for reviewId ' + reviewId);
+
+  Review
+    .findById(reviewId)
+    .select('comments')
+    .exec(function(err, review) {
+      var thisComment;
+      var response = {
+        status : 200,
+        message : {}
+      };
+      if (err) {
+        console.log("Error finding review");
+        response.status = 500;
+        response.message = err;
+      } else if(!review) {
+        console.log("Review id not found in database", reviewId);
+        response.status = 404;
+        response.message = {
+          "message" : "review ID not found " + reviewId
+        };
+      } else {
+        // Get the chapter
+        thisComment = review.comments.id(commentId);
+        console.log(thisComment);
+        // If the chapter doesn't exist Mongoose returns null
+        if (!thisComment) {
+          response.status = 404;
+          response.message = {
+            "message" : "Comment ID not found " + commentId
+          };
+        }
+      }
+      if (response.status !== 200) {
+        res
+          .status(response.status)
+          .json(response.message);
+      } else {
+        thisComment.message = req.body.message;
+
+        review.save(function(err, reviewUpdated) {
+          if (err) {
+            res
+              .status(500)
+              .json(err);
+          } else {
+            res
+              .status(204)
+              .json();
+          }
+        });
+      }
+    });
+
+};
+
+module.exports.commentDeleteOne = function(req, res) {
+  var reviewId = req.params.reviewId;
+  var commentId = req.params.commentId;
+  console.log('PUT commentId ' + commentId + ' for reviewId ' + reviewId);
+
+  Review
+    .findById(reviewId)
+    .select('comments')
+    .exec(function(err, review) {
+      var thisComment;
+      var response = {
+        status : 200,
+        message : {}
+      };
+      if (err) {
+        console.log("Error finding review");
+        response.status = 500;
+        response.message = err;
+      } else if(!review) {
+        console.log("Review id not found in database", reviewId);
+        response.status = 404;
+        response.message = {
+          "message" : "Review ID not found " + reviewId
+        };
+      } else {
+        // Get the chapter
+        thisComment = review.comments.id(commentId);
+        console.log(thisComment);
+        // If the chapter doesn't exist Mongoose returns null
+        if (!thisComment) {
+          response.status = 404;
+          response.message = {
+            "message" : "Comment ID not found " + commentId
+          };
+        }
+      }
+      if (response.status !== 200) {
+        res
+          .status(response.status)
+          .json(response.message);
+      } else {
+        thisComment.remove();
+        review.save(function(err, reviewUpdated) {
+          if (err) {
+            res
+              .status(500)
+              .json(err);
+          } else {
+            res
+              .status(204)
+              .json();
+          }
+        });
+      }
+    });
+
+};

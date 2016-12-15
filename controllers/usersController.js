@@ -47,7 +47,7 @@ module.exports.login = function(req, res){
   });
 };
 
-module.exports.authenticate = function (req, res, next){
+module.exports.authentificate = function (req, res, next){
   var headerExists = req.headers.authorization;
   if(headerExists){
     var token = req.header.authorization.split(' ')[1];
