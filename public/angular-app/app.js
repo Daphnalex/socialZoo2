@@ -1,4 +1,4 @@
-var app = angular.module('SocialZoo', ['ngRoute','angular-jwt']);
+var app = angular.module('SocialZoo', ['ngRoute','angular-jwt','firebase']);
 
 app.run(function($rootScope, $location, $window, usersFactory) {
   console.log($rootScope.isLoggedIn);
@@ -28,6 +28,13 @@ app.config(['$httpProvider','$routeProvider', function($httpProvider,$routeProvi
       templateUrl: 'angular-app/register/register.html',
       controller : 'RegisterController',
       controllerAs : 'vm',
+      access : {
+        restricted : false
+      }
+    })
+    .when('/chat', {
+      templateUrl: 'angular-app/partials/chat/chat.html',
+      controller : 'chatController',
       access : {
         restricted : false
       }
