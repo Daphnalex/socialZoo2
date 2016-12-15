@@ -1,10 +1,10 @@
 var app = angular.module('SocialZoo', ['ngRoute','angular-jwt']);
 
-app.run(function($rootScope, $location, $window, usersFactory) {
+app.run(function($rootScope, $location, $window, authentificationFactory) {
   console.log($rootScope.isLoggedIn);
   $rootScope.$on('$routeChangeStart', function(event, nextRoute, currentRoute) {
-    //$rootScope.isLoggedIn = usersFactory.isLoggedIn ? usersFactory.isLoggedIn : false;
-    if (nextRoute.access !== undefined && nextRoute.access.restricted && !$window.sessionStorage.token && !usersFactory.isLoggedIn) {
+    //$rootScope.isLoggedIn = authentificationFactory.isLoggedIn ? authentificationFactory.isLoggedIn : false;
+    if (nextRoute.access !== undefined && nextRoute.access.restricted && !$window.sessionStorage.token && !authentificationFactory.isLoggedIn) {
       event.preventDefault();
       $location.path('/authentification');
     }

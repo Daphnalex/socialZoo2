@@ -57,8 +57,14 @@ body{
   -moz-border-radius:50%;
   border:6px solid rgba(221, 218, 215, 0.23);
 }
+h1 {
+  font-size : 22px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 20px;
+}
 form {
-  padding:24% 2.5em;
+  padding: 95px 20px 20px 20px;
 }
 form li{
   border:1px solid #B4B2B2;
@@ -156,6 +162,7 @@ button:hover{
 
 }
 /***************************/
+
 .p-container{
   margin-top:2em;
 }
@@ -434,10 +441,10 @@ button:hover{
 
         </div>
 
-      <form name="myForm" ng-submit="vm.register()">
+      <form name="vm.myForm" ng-submit="vm.register()">
         <h1>S'enregistrer</h1>
         <li>
-          <input type="text" class="validate" ng-model="vm.username"  placeholder="Nom du zoo" required><a href="#" class=" icon user"></a>
+          <input type="text" class="validate" ng-model="vm.nameZoo"  placeholder="Nom du zoo" required><a href="#" class=" icon user"></a>
         </li>
         <li>
           <input type="password" class="validate" ng-model="vm.password" placeholder="Mot de passe" required><a href="#" class=" icon lock"></a>
@@ -450,7 +457,7 @@ button:hover{
         <div class="row register">
           <div class="input-field margin medium-small">
             <div class="registerNow">
-                <a href="/authentification">Déjà membre !</a>
+                <a href="#/authentification">Déjà membre !</a>
             </div>
           </div>
         </div>

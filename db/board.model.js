@@ -1,35 +1,36 @@
 var mongoose = require('mongoose');
 
+var userSchema = new mongoose.Schema({
+  nameZoo : String,
+  avatar : String,
+  image : String
+});
+
 var commentSchema = new mongoose.Schema({
   message : String,
-  author : String,
+  author : userSchema,
   createdOn : {
     type : Date,
     "default" : Date.now
   }
 });
 
-var reviewSchema = new mongoose.Schema({
+var Review = new mongoose.Schema({
   message : {
     type : String,
     required : true
   },
-  author : {
-    type : String,
-    required : true
-  },
+  author : userSchema,
   comments : [commentSchema],
   createdOn : {
     type : Date,
-    required : true,
     "default" : Date.now
   }
 });
 
 var Board = new mongoose.Schema({
-  imageBoard : String,
-  avatar : String,
-  reviews : [reviewSchema]
+  reviews : [Review]
 });
 
 mongoose.model('Board', Board);
+mongoose.model('Review', Review);

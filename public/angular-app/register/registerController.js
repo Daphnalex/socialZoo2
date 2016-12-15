@@ -1,28 +1,36 @@
 angular.module('SocialZoo').controller('RegisterController', RegisterController);
 
-function RegisterController($http) {
+function RegisterController($http, $location, usersFactory) {
   var vm = this;
+  vm.isSubmitted = false;
 
   vm.register = function() {
     var user = {
-      zooName: vm.username,
+      nameZoo: vm.nameZoo,
       password: vm.password
     };
-
-    if(!vm.username || !vm.password) {
+    //console.log(user);
+    if(!vm.nameZoo || !vm.password) {
       vm.error = 'Please add a username and a password.';
     } else {
-      if(vm.password !== vm.passwordRepeat) {
-        vm.error = 'Please make sure the passwords match.';
-      } else {
-        $http.post('/api/users/register', user).then(function(result) {
-          console.log(result);
-          vm.message = 'Successful registration, please login.';
-          vm.error = '';
-        }).catch(function(error) {
-          console.log(error);
-        });
+        console.log('coucou');
+          if(vm.myForm.$valid){
+            console.log(user);
+            usersFactory.userAddOne(user).then(function(response){
+
+              console.log('réponse '+response);
+              if(response.status === 201){
+                console.log("j'entre");
+                $location.path('/authentification');
+              } else {
+                console.log('erreur');
+              }
+            }).catch(function(error){
+              console.log(error);
+            });
+          } else {
+            vm.isSubmitted = true;
+          }
       }
     }
   };
-}
