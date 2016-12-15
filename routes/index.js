@@ -17,6 +17,7 @@ router
   .route('/users')
   .get(ctrlUsers.getAllUsers);
 
+
 router
   .route('/messages')
   .post(ctrlMessages.addOneMessage)
