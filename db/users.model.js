@@ -8,6 +8,8 @@ var userSchema = new mongoose.Schema({
   password : {
     type : String,
     required : true
-  }
+  },
+  avatar : String,
+  image : String
 });
 mongoose.model('User', userSchema);

@@ -1,0 +1,17 @@
+[{
+  "nameZoo" : "Zoo de Beauval",
+  "password" : "Beauval",
+  "avatar" : "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Enseigne_du_ZooParc_de_Beauval_-_20150731_09h10_(10474).jpg/280px-Enseigne_du_ZooParc_de_Beauval_-_20150731_09h10_(10474).jpg",
+  "image": "http://www.tours-tourisme.fr/files/ot-tours/files/apigento2/55/55_zoo-de-beauval_1.jpg"
+},{
+  "nameZoo" : "Zoo de la Flèche",
+  "password" : "fleche",
+  "avatar" : "http://acces-ce.fr/2567-thickbox_default/zoo-de-la-fleche.jpg",
+  "image": "http://p8.storage.canalblog.com/87/73/1363194/104456666.jpg"
+},
+{
+  "nameZoo" : "Zoo de la Palmyre",
+  "password" : "palmyre",
+  "avatar" : "https://www.mysteresdelouest.com/client/cache/produit/600_400____1__ours-blanc--zoo-de-la-palmyre-journee_953.jpg",
+  "image": "http://www.aubonair.com/usermedia/photo-634335682885937500-266.jpg?dummy=0&m=600"
+}]
