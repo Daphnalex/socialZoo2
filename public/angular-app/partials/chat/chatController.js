@@ -7,8 +7,7 @@ function chatController($scope, $firebase, jwtHelper,$window) {
   var token = $window.sessionStorage.token;
   var decodedToken = jwtHelper.decodeToken(token);
   console.log(decodedToken);
-  $scope.loggedInUser = decodedToken.username;
-  $scope.loggedInUser = "Mat";
+  $scope.loggedInUser = decodedToken.nameZoo;
   $scope.addMessage = function(e) {
           if (e.keyCode != 13) return;
           $scope.messages.$add({from: $scope.loggedInUser, body: $scope.msg});

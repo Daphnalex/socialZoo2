@@ -27,7 +27,7 @@ function loginController($http, $location, $window, authentificationFactory, jwt
           var token = $window.sessionStorage.token;
           var decodedToken = jwtHelper.decodeToken(token);
           console.log(decodedToken);
-          lc.loggedInUser = decodedToken.username;
+          lc.loggedInUser = decodedToken.nameZoo;
           $rootScope.isLoggedIn = lc.loggedInUser != '' ? true : false;
           $location.path("/");
         }
