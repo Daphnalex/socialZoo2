@@ -55,6 +55,14 @@ app.config(['$httpProvider','$routeProvider', function($httpProvider,$routeProvi
         restricted : true
       }
     })
+    .when('/zoo', {
+      templateUrl: 'angular-app/board/listMessage/listMessageMe.html',
+      controller : 'listMessageCtrl',
+      controllerAs : 'lm',
+      access: {
+        restricted : true
+      }
+    })
     .otherwise({
       redirectTo : '/home'
     });

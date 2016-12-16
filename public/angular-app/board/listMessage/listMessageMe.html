@@ -23,7 +23,7 @@
     </div>
   </div>
 
-  <div class="row messageBloc" ng-repeat="review in lm.reviews|orderBy:'createdOn':true">
+  <div ng-if="review.author == loggedInUser" class="row messageBloc" ng-repeat="review in lm.reviews|orderBy:'createdOn':true">
     <div class="col s12 offset-m3 m6">
       <div class="card">
         <div class="author" style="padding:15px;">
