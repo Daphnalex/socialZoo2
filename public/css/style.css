@@ -101,3 +101,11 @@ div.collectionZoo{
 .btn:hover, .btn-large:hover{
   background-color: #fccf5e;
 }
+
+table.striped > tbody > tr:nth-child(2n+1) > td, .table-striped > tbody > tr:nth-child(2n+1) > th {
+   background-color: #cdb5eb;
+}
+
+table i.material-icons{
+  color:#6e17db;
+}
