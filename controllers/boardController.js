@@ -16,6 +16,7 @@ module.exports.getAllMessages = function(req, res){
       }
    });
 };
+
 module.exports.addOneMessage = function(req, res){
   Review
     .create({

@@ -2,38 +2,32 @@ angular.module("SocialZoo").controller("listMessageCtrl",listMessageCtrl);
 
 
 function listMessageCtrl($location, $route, $scope, $routeParams, reviewFactory, $window, jwtHelper){
-  var lm = this;
-  lm.reviews = null;
-  reviewFactory.getAllMessages().then(function(response){
-    console.log(response);
-    lm.reviews = response.data;
-  });
+    var lm = this;
+    lm.reviews = null;
+    reviewFactory.getAllMessages().then(function(response){
+      console.log('la réponse : '+response);
+      lm.reviews = response.data;
 
-  lm.pop = function(){
-    angular.element('#modalComment').css("display", "block");
-  }
-  lm.fermeture = function(){
-    angular.element('#modalComment').remove();
-    $route.reload();
-  }
+      lm.getOne = function(review){
+        angular.element('#modalComment').css('display','block');
+        console.log('la donnée est '+review);
+        var id = review._id;
+        reviewFactory.getOneMessage(id).then(function(response){
+          console.log(id);
+          lm.addComment = function(review){
 
-
-  lm.addComment = function(){
-    var id = $routeParams.id;
-    console.log('id : '+id );
-    var token = jwtHelper.decodeToken($window.sessionStorage.token);
-    var username = token.username;
-    console.log(username);
-    var postData = {
-      nameZoo : username,
-      message : lm.message
-    };
-
-    if(lm.formComment.$valid){
-
-    }
+            reviewFactory.commentAddOne(id, review).then(function(response){
+              lm.review = response;
+            });
+            angular.element('#modalComment').remove();
+            $route.reload();
+          }
+        });
 
 
-  }
+      };
+
+
+    });
 
 }

@@ -1,7 +1,7 @@
 <div class="couverture">
   <img src="images/zoo-de-beauval.jpg" style="width:100%" alt="couverture">
 </div>
-<div class="row messageBloc" ng-repeat="review in lm.reviews">
+<div class="row messageBloc" ng-repeat="review in lm.reviews" style="padding-bottom:20px">
   <div class="col s12 offset-m3 m6">
     <div class="card">
       <div class="author">
@@ -10,14 +10,26 @@
         <p>{{review.message}}</p>
       </div>
       <div class="card-action">
-        <button class="waves-effect waves-light btn" ng-click="lm.pop()">Commenter</button>
+        <button class="waves-effect waves-light btn" ng-click="lm.getOne(review)">Commenter</button>
       </div>
-      <div class="card-content" style="width:75%; margin-left:10%" ng-repeat="comment in review.comments">
-        <b>COMMENTAIRES : </b>
-        <div><br/></div>
-        <b></b>
-        <p>{{comment.message}}</p>
-      </div>
+      <table class="striped" style="width: 75%; margin-left:10%">
+        <thead>
+          <td style="padding: 20px 20px 20px 20px"><b>Commentaires</b></td>
+        </thead>
+        <tr ng-repeat="comment in review.comments">
+            <td>
+              <div class="right">
+                <a>
+                  <i class="material-icons" ng-click="fd.edit(chapter)">mode_edit</i>
+                  <i class="material-icons" ng-click="fd.delete(chapter)">delete</i>
+                </a>
+              </div>
+              <b>{{username}}</b>
+              <p>{{comment.message}}
+            </td>
+        </tr>
+      </table>
+      <div><br/></div>
     </div>
   </div>
 </div>
