@@ -1,68 +1,96 @@
 <div class="couverture">
-  <img src="images/zoo-de-beauval.jpg" style="width:100%" alt="couverture">
+    <img src="images/zoo-de-beauval.jpg" style="width:100%" alt="couverture">
 </div>
-<div class="row messageBloc" ng-repeat="review in lm.reviews" style="padding-bottom:20px">
-  <div class="col s12 offset-m3 m6">
-    <div class="card">
-      <div class="author">
-      </div>
-      <div class="card-content">
-        <p>{{review.message}}</p>
-      </div>
-      <div class="card-action">
-        <button class="waves-effect waves-light btn" ng-click="lm.getOne(review)">Commenter</button>
-      </div>
-      <table class="striped" style="width: 75%; margin-left:10%">
-        <thead>
-          <td style="padding: 20px 20px 20px 20px"><b>Commentaires</b></td>
-        </thead>
-        <tr ng-repeat="comment in review.comments">
-            <td>
-              <div class="right">
-                <a>
-                  <i class="material-icons" ng-click="fd.edit(chapter)">mode_edit</i>
-                  <i class="material-icons" ng-click="fd.delete(chapter)">delete</i>
-                </a>
-              </div>
-              <b>{{username}}</b>
-              <p>{{comment.message}}
-            </td>
-        </tr>
-      </table>
-      <div><br/></div>
+
+<!--commentaires-->
+<div class="row messageBloc" style="padding-bottom:20px">
+    <div class="col s12 offset-m3 m6">
+        <div class="card">
+            <div class="row">
+                <form class="col s12" name="lm.blocForm" ng-submit="lm.addMessage(message)">
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input id="message" type="text" class="validate" ng-model="lm.message" required></input>
+                            <label for="message">Votre message</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                      <div class="col s12">
+
+                        <button class="waves-effect waves-light btn right" type="submit" name="action">Poster
+                          <i class="material-icons right">send</i>
+                        </button>
+                    </div>
+                    </div>
+                </form>
+            </div>
+
+            <div><br/></div>
+        </div>
     </div>
-  </div>
-</div>
-<div id="modalComment" class="modal">
-   <div class="modal-content">
-      <h5>Commenter la publication</h5>
-       <form name="lm.formComment" ng-submit="lm.addComment(comment)">
-           <div class="row">
-               <div class="input-field col s12">
-                   <input id="title" type="text" class="validate" ng-model="comment.message" required>
-
-                   <label for="title" class="active" >Commentaire</label>
-               </div>
-           </div>
-          <div class="row">
-               <div class="col s12">
-                   <button class="btn waves-effect waves-light right" type="submit" name="action">Ajouter
-                       <i class="material-icons right">send</i>
-                   </button>
-                   <button ng-click="lm.fermeture()" class="modal-action modal-close waves-effect waves-green btn-flat">Annuler</button>
-               </div>
-           </div>
-       </form>
-   </div>
 </div>
 
+<div class="row messageBloc" ng-repeat="review in lm.reviews" style="padding-bottom:20px">
+    <div class="col s12 offset-m3 m6">
+        <div class="card">
+            <div class="author"></div>
+            <div class="card-content">
+                <p>{{review.message}}</p>
+            </div>
+            <div class="card-action">
+                <button class="waves-effect waves-light btn" ng-click="lm.getOne(review)">Commenter</button>
+            </div>
+            <table class="striped" style="width: 75%; margin-left:10%">
+                <thead>
+                    <td style="padding: 20px 20px 20px 20px">
+                        <b>Commentaires</b>
+                    </td>
+                </thead>
+                <tr ng-repeat="comment in review.comments">
+                    <td>
+                        <div class="right">
+                            <a>
+                                <i class="material-icons" ng-click="fd.edit(chapter)">mode_edit</i>
+                                <i class="material-icons" ng-click="fd.delete(chapter)">delete</i>
+                            </a>
+                        </div>
+                        <b>{{username}}</b>
+                        <p>{{comment.message}}
+                        </td>
+                    </tr>
+                </table>
+                <div><br/></div>
+            </div>
+        </div>
+    </div>
+    <div id="modalComment" class="modal">
+        <div class="modal-content">
+            <h5>Commenter la publication</h5>
+            <form name="lm.formComment" ng-submit="lm.addComment(comment)">
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input id="title" type="text" class="validate" ng-model="comment.message" required>
 
-<script type="text/javascript">
-$(document).ready(function(){
- // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
- $('.modal').modal();
- $('#modalComment').modal('open');
- $('#modalComment').modal('close');
-});
+                        <label for="title" class="active">Commentaire</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col s12">
+                        <button class="btn waves-effect waves-light right" type="submit" name="action">Ajouter
+                            <i class="material-icons right">send</i>
+                        </button>
+                        <button ng-click="lm.fermeture()" class="modal-action modal-close waves-effect waves-green btn-flat">Annuler</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
 
-</script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+            $('.modal').modal();
+            $('#modalComment').modal('open');
+            $('#modalComment').modal('close');
+        });
+    </script>
