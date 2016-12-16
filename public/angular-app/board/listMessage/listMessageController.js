@@ -21,13 +21,27 @@ function listMessageCtrl($location, $route, $scope, $routeParams, reviewFactory,
             });
             angular.element('#modalComment').remove();
             $route.reload();
-          }
+          };
         });
+      };
+    })
 
-
+    lm.addMessage = function(){
+      var postData = {
+        message : lm.message
       };
 
+      if(lm.blocForm.$valid){
+        reviewFactory.addOneMessage(postData).then(function(response){
+          console.log(response.data);
+          if(response.status ===201){
+            $route.reload();
+          }
+        }).catch(function(error){
+          console.log(error);
+        });
+      }
+    };
 
-    });
 
 }

@@ -1,19 +1,17 @@
 /*COMMON CSS*/
-html {
+html, body {
     height: 100%;
 }
 footer {
     bottom: 0;
     left: 0;
     right: 0;
+    position: fixed;
 }
-body{
-  display: flex;
-  flex-direction: column;
-  min-height: 100%;
-}
+
 main {
-  flex: 1 0 auto;
+  width:100%;
+  height: 87%;
 }
 footer.page-footer{
   margin-top: 0px;
@@ -21,7 +19,17 @@ footer.page-footer{
 }
 /*FIN COMMON CSS*/
 
+div.murZoo{
+  overflow: hidden;
+  background-image:url(../images/zoo-de-beauval.jpg);
+  background-size: 100% auto;
+  max-height: 100%;
+  overflow: scroll;
+}
 /*BARRE DE NAV*/
+.row{
+  margin-bottom: 0px;
+}
 nav {
   border-bottom: 5px solid #6e17db;
   background-color: white;
@@ -87,14 +95,10 @@ div.collectionZoo{
 .collection .collection-item.avatar .title{
   font-size: 20px;
 }
-.collection .collection-item.avatar{
- ,w è
-}
+
 /*FIN COLLECTION ZOO*/
 
-.couverture img{
-  position: absolute;
-}
+
 .btn{
   background-color: #fab300;
 }
@@ -108,4 +112,9 @@ table.striped > tbody > tr:nth-child(2n+1) > td, .table-striped > tbody > tr:nth
 
 table i.material-icons{
   color:#6e17db;
+}
+
+.blocComment {
+  max-height: 200px;
+  overflow: scroll;
 }
