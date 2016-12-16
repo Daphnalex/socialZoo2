@@ -20,7 +20,8 @@ module.exports.getAllMessages = function(req, res){
 module.exports.addOneMessage = function(req, res){
   Review
     .create({
-      message : req.body.message
+      message : req.body.message,
+      author : req.body.author
     }, function(err, message){
       if (err){
         res
@@ -114,7 +115,8 @@ module.exports.deleteMessage = function(req, res){
 
 var _addComment = function(req, res, review){
   review.comments.push({
-    message : req.body.message
+    message : req.body.message,
+    author : req.body.author
   });
 
 

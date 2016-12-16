@@ -26,7 +26,8 @@
   <div class="row messageBloc" ng-repeat="review in lm.reviews">
     <div class="col s12 offset-m3 m6">
       <div class="card">
-        <div class="author">
+        <div class="author" style="padding:15px;">
+          <h5>{{review.author}}</h5>
         </div>
         <div class="card-content">
           <p>{{review.message}}</p>
@@ -47,7 +48,7 @@
                       <i class="material-icons" ng-click="lm.delete(comment)">delete</i>
                     </a>
                   </div>-->
-                  <b>{{username}}</b>
+                  <b>{{comment.author}}</b>
                   <p>{{comment.message}}
                 </td>
             </tr>

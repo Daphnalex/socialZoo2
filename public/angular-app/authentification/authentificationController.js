@@ -29,7 +29,7 @@ function loginController($http, $location, $window, authentificationFactory, jwt
           console.log(decodedToken);
           lc.loggedInUser = decodedToken.nameZoo;
           $rootScope.isLoggedIn = lc.loggedInUser != '' ? true : false;
-          $location.path("/");
+          $location.path("/home");
         }
       }).catch(function(error) {
         console.log(error);

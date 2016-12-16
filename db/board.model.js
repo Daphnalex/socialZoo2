@@ -8,7 +8,7 @@ var userSchema = new mongoose.Schema({
 
 var commentSchema = new mongoose.Schema({
   message : String,
-  author : userSchema,
+  author : String,
   createdOn : {
     type : Date,
     "default" : Date.now
@@ -20,7 +20,7 @@ var Review = new mongoose.Schema({
     type : String,
     required : true
   },
-  author : userSchema,
+  author : String,
   comments : [commentSchema],
   createdOn : {
     type : Date,

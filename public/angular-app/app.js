@@ -11,7 +11,7 @@ app.run(function($rootScope, $location, $window, authentificationFactory) {
   });
 });
 
-app.config(['$httpProvider','$routeProvider', function($httpProvider,$routeProvider, $scope, $location){
+app.config(['$httpProvider','$routeProvider', function($httpProvider,$routeProvider, $scope, $location, $rootScope){
 
   $httpProvider.interceptors.push('AuthInterceptor');
 
@@ -27,9 +27,9 @@ app.config(['$httpProvider','$routeProvider', function($httpProvider,$routeProvi
     when('/logout', {
       templateUrl: 'angular-app/register/register.html',
       controller : function($scope){
-        $scope.isLoggedIn = false;
-        console.log($scope.isLoggedIn);
-        $location.path('/authentification')
+        $rootScope.isLoggedIn = false;
+        delete $window.sessionStorage.token;
+        $location.path('/authentification');
       }
     })
     .when('/register', {
@@ -47,7 +47,7 @@ app.config(['$httpProvider','$routeProvider', function($httpProvider,$routeProvi
         restricted : false
       }
     })
-    .when('/', {
+    .when('/home', {
       templateUrl: 'angular-app/board/listMessage/listMessage.html',
       controller : 'listMessageCtrl',
       controllerAs : 'lm',
@@ -56,7 +56,7 @@ app.config(['$httpProvider','$routeProvider', function($httpProvider,$routeProvi
       }
     })
     .otherwise({
-      redirectTo : '/'
+      redirectTo : '/home'
     });
 }]);
 
