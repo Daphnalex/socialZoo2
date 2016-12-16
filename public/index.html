@@ -38,6 +38,15 @@
 <script type="text/javascript" src="angular-app/board/listMessage/messageFactory.js"></script>
 <script type="text/javascript" src="angular-app/register/registerController.js"></script>
 
+<script type="text/javascript">
+(function(){
+    function logout(){
+      console.log('tu passe pas');
+      isLoggedIn = false;
+      $location.path('#/authentification');
+    }
+})();
+</script>
 
 </body>
 </html>

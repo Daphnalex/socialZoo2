@@ -40,7 +40,7 @@ function loginController($http, $location, $window, authentificationFactory, jwt
 
 
 
-  $scope.logout = function() {
+  lc.logout = function() {
     AuthFactory.isLoggedIn = false;
     delete $window.sessionStorage.token;
     $location.path('/authentification');

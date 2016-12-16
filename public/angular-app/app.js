@@ -11,7 +11,7 @@ app.run(function($rootScope, $location, $window, authentificationFactory) {
   });
 });
 
-app.config(['$httpProvider','$routeProvider', function($httpProvider,$routeProvider){
+app.config(['$httpProvider','$routeProvider', function($httpProvider,$routeProvider, $scope, $location){
 
   $httpProvider.interceptors.push('AuthInterceptor');
 
@@ -22,6 +22,14 @@ app.config(['$httpProvider','$routeProvider', function($httpProvider,$routeProvi
       controllerAs : 'lc',
       access : {
         restricted : false
+      }
+    }).
+    when('/logout', {
+      templateUrl: 'angular-app/register/register.html',
+      controller : function($scope){
+        $scope.isLoggedIn = false;
+        console.log($scope.isLoggedIn);
+        $location.path('/authentification')
       }
     })
     .when('/register', {
